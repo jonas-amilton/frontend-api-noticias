@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   // Define o estado inicial do formulário com campos de:
@@ -15,6 +16,9 @@ const Register = () => {
   const [message, setMessage] = useState("");
   // Define o estado para armazenar erros de validação
   const [errors, setErrors] = useState({});
+
+  // Hook de navegação
+  const navigate = useNavigate();
 
   // Função para lidar com mudanças nos campos do formulário
   const handleChange = (e) => {
@@ -40,6 +44,8 @@ const Register = () => {
       setErrors({});
       // Lida com a resposta da API, e.g., armazenar token, redirecionar, etc.
       console.log(response.data);
+      // Redireciona para login
+      navigate("/login");
     } catch (error) {
       if (error.response && error.response.status === 422) {
         setErrors(error.response.data.errors);
