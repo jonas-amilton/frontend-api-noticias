@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   // Define o estado inicial do formulário com campos de:
@@ -113,6 +113,9 @@ const Register = () => {
         <button type="submit">Register</button>
       </form>
       {message && <p>{message}</p>}
+      <p>
+        Já tem cadastro? <Link to="/login">Faça login</Link>
+      </p>
     </div>
   );
 };
